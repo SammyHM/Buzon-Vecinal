@@ -2,8 +2,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // Import css/imagenes
-import styles from '../css/login.module.css'
-import image_login from '../css/img/buzon_login.png'
+import styles from '../../css/login.module.css'
+import image_login from '../../css/img/buzon_login.png'
 
 export default function Login({
   title,

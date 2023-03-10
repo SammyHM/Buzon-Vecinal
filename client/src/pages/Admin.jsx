@@ -4,8 +4,8 @@ import { Outlet, useNavigate } from 'react-router-dom'
 // Import nuestros componentes
 import { fetchUsuarios } from '../api'
 import ListaVecinos from '../components/ListaVecinos'
-import Logout from '../components/Logout'
-import VolverAInicio from '../components/VolverAInicio'
+import Logout from '../components/log/Logout'
+import VolverAInicio from '../components/util/VolverAInicio'
 // Import css/imagenes
 import '../css/index.css'
 import styles from '../css/admin.module.css'

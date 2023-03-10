@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 import { Outlet } from 'react-router-dom'
 // Import nuestros componentes
-import { UserContext } from '../context/UserContext'
+import { UserContext } from '../../context/UserContext'
 import Redirect from './Redirect'
 
 // Las rutas que se situen dentro de este componente solo

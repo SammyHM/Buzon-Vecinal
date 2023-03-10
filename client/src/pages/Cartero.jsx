@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react'
 // Import nuestros componentes
 import { sendMensaje } from '../api'
-import VolverAInicio from '../components/VolverAInicio'
+import VolverAInicio from '../components/util/VolverAInicio'
 // Import css
 import styles from '../css/cartero.module.css'
 

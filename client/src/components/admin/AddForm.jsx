@@ -1,28 +1,20 @@
 // Import librerias react
-import { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useContext, useState } from 'react'
 // Import nuestros componentes
-import { UserContext } from '../context/UserContext'
-import { fetchUsuario } from '../api'
-import { updateUser } from '../api'
-import Cargando from './Cargando'
+import { UserContext } from '../../context/UserContext'
+import { insertUser } from '../../api'
+import Cargando from '../util/Cargando'
 // Import css/imagenes
-import styles from '../css/admin.module.css'
+import styles from '../../css/admin.module.css'
 
-export default function EditForm() {
+export default function AddForm() {
   const { user } = useContext(UserContext)
-  const { mail } = useParams()
+
   const [formData, setFormData] = useState({
     correo: '',
     contrasena: '',
     imagen: '',
   })
-
-  useEffect(() => {
-    fetchUsuario(user, mail).then((response) => {
-      setFormData(response)
-    })
-  }, [user, mail])
 
   const handleInput = (e) => {
     const value = e.target.value
@@ -34,18 +26,18 @@ export default function EditForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user, formData).then((response) => {
+    insertUser(user, formData).then((response) => {
       if (response.result) {
         alert('Exito')
       } else {
-        alert('No se pudo actualizar los datos')
+        alert('No se pudo añadir el usuario')
       }
     })
   }
 
   return formData ? (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h2>Editar usuario</h2>
+      <h2>Usuario nuevo</h2>
       <label htmlFor="user">Usuario</label>
       <input
         id="user"
@@ -72,7 +64,7 @@ export default function EditForm() {
         value={formData.imagen ? formData.imagen : ''}
         onChange={handleInput}
       />
-      <button>Actualizar</button>
+      <button>Añadir</button>
     </form>
   ) : (
     <Cargando />

@@ -2,11 +2,11 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 // Import nuestros componentes
-import { UserContext } from '../context/UserContext'
-import { deleteUsuario } from '../api'
+import { UserContext } from '../../context/UserContext'
+import { deleteUsuario } from '../../api'
 // Import css/imagenes
-import styles from '../css/admin.module.css'
-import placeholder from '../css/img/placeholder.png'
+import styles from '../../css/admin.module.css'
+import placeholder from '../../css/img/placeholder.png'
 
 export default function AdminUser({ mail, image }) {
   const navigate = useNavigate()

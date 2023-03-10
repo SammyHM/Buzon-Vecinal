@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { authUser } from '../api'
 import { authAdmin } from '../api'
 import { UserContext } from '../context/UserContext'
-import FormularioLogin from '../components/Login'
+import FormularioLogin from '../components/log/Login'
 
 export default function Login({ mode }) {
   const navigate = useNavigate()

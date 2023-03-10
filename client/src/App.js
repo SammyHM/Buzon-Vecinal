@@ -7,9 +7,9 @@ import Login from './pages/Login'
 import Vecino from './pages/Vecino'
 import Cartero from './pages/Cartero'
 import Admin from './pages/Admin'
-import ProtectedRoute from './components/ProtectedRoute'
-import EditForm from './components/EditForm'
-import AddForm from './components/AddForm'
+import ProtectedRoute from './components/util/ProtectedRoute'
+import EditForm from './components/admin/EditForm'
+import AddForm from './components/admin/AddForm'
 
 // Definicion de nuestro sistema de rutas
 export default function App() {
