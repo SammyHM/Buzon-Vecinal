@@ -15,5 +15,5 @@ usuario: admin, contraseña: admin.
 # CLIENTE
 
 1.- Necesitas tener `node` instalado. <br />
-2.- Abre la terminal en la ruta cliente y ejecuta `npm install react-scipts & npm start`. <br />
+2.- Abre la terminal en la ruta cliente y ejecuta `npm install react-scripts '&' npm start`. <br />
 3.- Se puede acceder al cliente por localhost, puerto 3000 (`localhost:3000`).
