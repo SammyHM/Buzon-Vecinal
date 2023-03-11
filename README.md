@@ -8,10 +8,9 @@
 
 1.- Necesitas tener `docker` instalado. <br />
 2.- Abre la terminal en la ruta servidor y ejecuta `docker compose up`. <br />
-3.- No se debería acceder a las rutas manualmente, pero si se quiere depurar
-puedes escribir en el navegardor localhost, puerto 80 (`localhost:80`). <br />
+3.- El servidor está en localhost, puerto 80 (`localhost:80`). <br />
 4.- La base de datos está en localhost, puerto 8001 (`localhost:8001`),
-usuario: admin, contraseña: admin. 
+usuario: admin, contraseña: admin.
 
 # CLIENTE
 
