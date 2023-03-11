@@ -1,6 +1,6 @@
 # GIT HUB
 
-1.- Ejecuta el siguiente comando en la terminal, donde quieras guardar el repositorio. (Yo lo ejecuto en c:/dev, una carpeta que me he creado).
+1.- Ejecuta el siguiente comando en la terminal donde quieras guardar el repositorio. (Yo lo ejecuto en c:/dev, una carpeta que me he creado).
 `git clone -b master https://github.com/SammyHM/Buzon-Vecinal` <br />
 2.- Igual que hacíamos antes, te creas una rama `git checkout -b [rama]` y la subes con `git push`.
 
