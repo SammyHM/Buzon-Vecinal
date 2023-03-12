@@ -11,3 +11,10 @@
 3.- El servidor está en localhost, puerto 80 (`localhost:80`). <br />
 4.- La base de datos está en localhost, puerto 8001 (`localhost:8001`), usuario: admin, contraseña: admin. <br />
 5.- El cliente está en  localhost, puerto 3000 (`localhost:3000`). <br />
+
+# RECOMENDACIÓN
+
+Docker está configurado para usar mucha ram, yo lo he limitado con un fichero `.wslconfig` en la carpeta de usuario `%userprofile%`.
+Lo he creado y he introducido el siguiente text 
+`[wsl2] <br />
+memory=2GB`
