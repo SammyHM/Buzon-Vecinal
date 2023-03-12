@@ -18,4 +18,6 @@ Docker está configurado para usar mucha ram, yo lo he limitado creandome un fic
 Su contenido: <hr />
 `[wsl2]` <br />
 `memory=2GB`<hr />
-Puedes cambiar el límite de memoria usada al que quieras.
+Puedes cambiar el límite de memoria usada al que quieras. <br />
+
+Una vez que termines de usar docker, deberías finalizar todos los procesos de docker (excepto `Docker Desktop Service`) desde el administrador de tareas y esperar un minuto o dos para que `vmmem` deje de ejecutarse.
