@@ -15,11 +15,11 @@
 # RECOMENDACIÓN
 
 Docker está configurado para usar mucha ram, yo lo he limitado creandome un fichero `.wslconfig` en la carpeta de usuario `%userprofile%`. <br />
-Su contenido: <hr />
+Su contenido: <br />
 <pre>
   [wsl2]
   memory=2GB
 </pre>
-(Puedes cambiar el límite de memoria usada al que quieras). <hr />
+(Puedes cambiar el límite de memoria usada al que quieras). <br />
 
 Una vez que termines de usar docker, deberías finalizar todos los procesos de docker (excepto `Docker Desktop Service`) desde el administrador de tareas y esperar un minuto o dos para que `vmmem` deje de ejecutarse.
