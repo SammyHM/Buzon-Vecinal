@@ -14,8 +14,8 @@
 
 # RECOMENDACIÓN
 
-Docker está configurado para usar mucha ram, yo lo he limitado creandome un fichero `.wslconfig` en la carpeta de usuario `%userprofile%`.
+Docker está configurado para usar mucha ram, yo lo he limitado creandome un fichero `.wslconfig` en la carpeta de usuario `%userprofile%`. <hr />
 Su contenido: <br />
 `[wsl2]` <br />
-`memory=2GB`<br />
+`memory=2GB`<hr />
 Puedes cambiar el límite de memoria usada al que quieras.
