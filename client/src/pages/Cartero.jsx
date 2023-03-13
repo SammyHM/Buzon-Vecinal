@@ -1,60 +1,52 @@
 // Import librerias react
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from "react";
 // Import nuestros componentes
-import { sendMensaje } from '../api'
-import VolverAInicio from '../components/util/VolverAInicio'
+import { sendMensaje } from "../api";
+import Header from "../components/Header";
+import VolverAInicio from "../components/util/VolverAInicio";
 // Import css
-import styles from '../css/cartero.module.css'
+import styles from "../css/cartero.module.css";
 
 export default function Cartero() {
-  const ref = useRef('')
-  const [estiloMensaje, setEstiloMensaje] = useState()
+  const ref = useRef("");
+  const [estiloMensaje, setEstiloMensaje] = useState();
 
   // Hooks y funciones de un formulario react
   const [formData, setFormData] = useState({
-    email: '',
-    asunto: '',
-    mensaje: '',
-  })
+    email: "",
+    asunto: "",
+    mensaje: "",
+  });
 
   const handleInput = (e) => {
-    const value = e.target.value
+    const value = e.target.value;
     setFormData({
       ...formData,
       [e.target.id]: value,
-    })
-  }
+    });
+  };
 
   const enviarMensaje = (e) => {
-    e.preventDefault()
-    const respuesta = sendMensaje(formData)
+    e.preventDefault();
+    const respuesta = sendMensaje(formData);
     respuesta.then((result) => {
       if (!result.result) {
-        setEstiloMensaje('error')
-        ref.current.innerText = 'No se encuentra el buzón'
+        setEstiloMensaje("error");
+        ref.current.innerText = "No se encuentra el buzón";
       } else {
         setFormData({
           ...formData,
-          [e.target.id]: '',
-        })
-        setEstiloMensaje('success')
-        ref.current.innerText = 'Se envio el mensaje correctamente'
+          [e.target.id]: "",
+        });
+        setEstiloMensaje("success");
+        ref.current.innerText = "Se envio el mensaje correctamente";
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className={styles.cartero}>
-      <div className={styles.shape}>
-        <div className={styles.custom}>
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              className={styles.shapeFill}
-            ></path>
-          </svg>
-        </div>
-      </div>
+      <Header />
       <h1>Carta</h1>
       <div className={styles.carta}>
         <form onSubmit={enviarMensaje}>
@@ -97,5 +89,5 @@ export default function Cartero() {
       </div>
       <VolverAInicio />
     </div>
-  )
+  );
 }

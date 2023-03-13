@@ -1,0 +1,124 @@
+.shape {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fda521;
+  min-height: 250px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  gap: 30px;
+}
+
+.shape .texto {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: column;
+
+  text-align: center;
+  top: 20px;
+  position: relative;
+}
+
+.shape .texto h3 {
+  font-size: 4vw;
+}
+
+.shape .texto p {
+  font-size: 3vw;
+}
+
+.shape img {
+  width: 50%;
+  margin-bottom: 12%;
+}
+
+.shape .custom {
+  background-color: #e9e3d5;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.shapeFill {
+  fill: #fda521;
+}
+
+.fill {
+  width: 100%;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .shape {
+    min-height: 250px;
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+    gap: 0px;
+    padding-top: 30px;
+  }
+
+  .shape .texto h3 {
+    font-size: 4vw;
+  }
+
+  .shape .texto p {
+    font-size: 2vw;
+  }
+
+  .shape .texto {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    text-align: center;
+    margin-top: -200px;
+    margin-left: 50px;
+  }
+
+  .shape img {
+    width: 40%;
+    margin-bottom: 12%;
+    margin-right: 50px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .shape {
+    min-height: 250px;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+    gap: 0px;
+  }
+
+  .shape .texto {
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    flex-direction: column;
+    text-align: center;
+    margin-top: -200px;
+    margin-left: 150px;
+  }
+
+  .shape .texto h3 {
+    font-size: 30pt;
+  }
+
+  .shape .texto p {
+    font-size: 22pt;
+  }
+
+  .shape img {
+    width: 500px;
+    margin-right: 150px;
+    margin-top: 30px;
+  }
+}
