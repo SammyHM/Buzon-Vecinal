@@ -13,7 +13,7 @@
 5.- El cliente está en  localhost, puerto 3000 (`localhost:3000`). <br />
 
 El cliente da problemas, solo se actualiza la página si apagas y vuelve a enceder el contenedor del cliente aunque internamente los ficheros si cambien. <br />
-Total que si quieres que se actualize la página automaticamente para el desarrollo, apaga el contenedor en `Docker Desktop` y hacemos como antes:
+Total, que si quieres que se actualize la página automaticamente para el desarrollo, apaga el contenedor en `Docker Desktop` y hacemos como antes:
 <pre>
   npm install
   npm start
