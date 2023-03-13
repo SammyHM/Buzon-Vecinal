@@ -1,4 +1,8 @@
 version: '3'
+
+volumes:
+  node_modules:
+
 services:
   db:
     container_name: db
@@ -22,17 +26,19 @@ services:
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
-    ports:
-      - 8001:80
     environment:
       - PMA_HOST=db
       - PMA_PORT=3306
+    ports:
+      - 8001:80
   client:
     container_name: client
     build:
       context: ./client
       dockerfile: ./Dockerfile
     volumes:
-      - ./client:/app
+      - ./client:/client
+      - node_modules:/client/node_modules
     ports:
       - 3000:3000
+    command: npm start
