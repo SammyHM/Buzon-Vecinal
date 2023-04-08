@@ -21,15 +21,15 @@ export default function ListaVecinos({ users, mode }) {
           modules={[Navigation]}
           slidesPerView={3}
           spaceBetween={mode === 'admin' ? 30 : -30}
-          className="mySwiper"
+          className='mySwiper'
         >
-          {users.map(({ id_vecino, correo, imagen }) => {
+          {users.map(({id, imagen, nombre, piso, puerta, user }, id_component) => {
             return (
-              <SwiperSlide key={id_vecino}>
+              <SwiperSlide key={id_component}>
                 {mode === 'admin' ? (
-                  <AdminUser mail={correo} image={imagen} />
+                  <AdminUser id={id} image={imagen} vecino={`${nombre}, ${piso} ${puerta}`} mail={user} />
                 ) : (
-                  <SelectUser mail={correo} image={imagen} />
+                  <SelectUser image={imagen} vecino={`${nombre}, ${piso} ${puerta}`} mail={user} />
                 )}
               </SwiperSlide>
             )

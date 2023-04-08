@@ -18,12 +18,10 @@ export default function ProtectedRoute({ role }) {
     const decodedPayload = atob(parts[1])
     const payloadObj = JSON.parse(decodedPayload)
 
-    console.log(payloadObj.role)
-
     return payloadObj.role === role
   }
 
-  return validUserRole(user) || validUserRole(storage) ? (
+  return validUserRole(user.token) || validUserRole(storage.token) ? (
     <Outlet />
   ) : (
     <Redirect />

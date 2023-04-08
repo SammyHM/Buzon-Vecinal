@@ -19,10 +19,10 @@ export default function Login({ mode }) {
   const adminSubmit = (e) => {
     e.preventDefault()
     authAdmin(formState[0]).then((response) => {
-      if (response.jwt) {
+      if (response) {
         setSelected(null)
-        setUser(response.jwt)
-        navigate('/admin')
+        setUser(response)
+        navigate('/admin/add')
       } else {
         setErrorMsg('Usuario y contraseña no coinciden')
       }
@@ -32,9 +32,9 @@ export default function Login({ mode }) {
   const userSubmit = (e) => {
     e.preventDefault()
     authUser(formState[0]).then((response) => {
-      if (response.jwt) {
+      if (response) {
         setSelected(null)
-        setUser(response.jwt)
+        setUser(response)
         navigate('/buzon')
       } else {
         setErrorMsg('Usuario y contraseña no coinciden')

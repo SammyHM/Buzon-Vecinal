@@ -10,6 +10,8 @@ export default function UserContextProvider({ children }) {
   const [selected, setSelected] = useState(null)
   // Guarda el usuario en sesion
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+  // Guarda la lista de usuarios
+  const [userList, setUserList] = useState([])
 
   useEffect(() => {
     if (user) {
@@ -18,7 +20,7 @@ export default function UserContextProvider({ children }) {
   }, [user])
 
   return (
-    <UserContext.Provider value={{ selected, setSelected, user, setUser }}>
+    <UserContext.Provider value={{ selected, setSelected, user, setUser, userList, setUserList }}>
       {children}
     </UserContext.Provider>
   )
