@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2023 a las 15:04:57
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Host: db:3306
+-- Generation Time: Apr 07, 2023 at 06:05 AM
+-- Server version: 8.0.32
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,132 +18,155 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `buzones`
+-- Database: `buzon_vecinal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administradores`
+-- Table structure for table `administradores`
 --
 
 CREATE TABLE `administradores` (
-  `id` int(255) NOT NULL,
-  `usuario` varchar(255) NOT NULL,
-  `contrasena` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `administradores`
+-- Dumping data for table `administradores`
 --
 
-INSERT INTO `administradores` (`id`, `usuario`, `contrasena`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `administradores` (`id`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `buzones`
+-- Table structure for table `buzones`
 --
 
 CREATE TABLE `buzones` (
-  `id_vecino` int(11) NOT NULL,
-  `id_buzon` int(11) NOT NULL,
-  `mensaje` varchar(255) NOT NULL,
-  `asunto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_mensaje` int NOT NULL,
+  `id_vecino` int NOT NULL,
+  `mensaje` text NOT NULL,
+  `asunto` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `buzones`
+-- Dumping data for table `buzones`
 --
 
-INSERT INTO `buzones` (`id_vecino`, `id_buzon`, `mensaje`, `asunto`) VALUES
-(1, 1, 'mensajito', 'Mesa'),
-(1, 2, 'mensajito2', 'Piano'),
-(1, 3, 'mensajito3', 'Casa'),
-(1, 4, 'mensajito4', 'Tabique'),
-(1, 5, 'mensajito5', 'Medicina'),
-(1, 6, 'mensajito6', 'Alquiler'),
-(1, 7, 'Buen mensajeasdfa', 'Cosicas'),
-(1, 8, 'asdfasdf', 'Asunto importante'),
-(1, 9, 'asdfasdf', 'Asunto importante'),
-(2, 1, 'Men saje', 'Bienvenido'),
-(2, 2, 'Mensaje test', 'Tabla');
+INSERT INTO `buzones` (`id_mensaje`, `id_vecino`, `mensaje`, `asunto`) VALUES
+(1, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies elit non lectus euismod, tristique euismod augue vestibulum. Aliquam ut bibendum arcu. Donec laoreet quam sit amet vehicula convallis. Aliquam molestie mi in magna varius tempus. Duis lobortis lorem ac velit elementum vehicula non id mauris. Phasellus tincidunt placerat dignissim. Nulla eget lacinia odio. Sed pharetra, arcu vitae fermentum bibendum, neque elit efficitur purus, sed scelerisque quam neque at neque. Maecenas in urna neque. Quisque gravida viverra vehicula. Morbi malesuada id lectus sed dignissim. Phasellus tortor mauris, dapibus id rutrum at, volutpat ut est. Duis posuere tincidunt felis cursus tempor. Quisque et libero nunc. Aenean ac elit nec arcu faucibus consectetur ut in enim. Fusce at metus id ante consequat viverra.\r\n\r\nMorbi luctus, tortor a convallis laoreet, diam neque eleifend ante, nec tempus augue felis vitae erat. Ut non turpis et arcu interdum facilisis ac a mauris. Duis aliquam dui metus, ut aliquet est scelerisque sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent iaculis felis non lacus malesuada, id consectetur est blandit. Sed varius, leo et interdum molestie, tortor nisi mattis sapien, id placerat eros augue sed nisi. Sed auctor lobortis quam, eu tempor erat tincidunt eu. Maecenas fermentum eleifend lorem nec hendrerit. Proin id tincidunt nunc. Sed libero lectus, semper interdum ornare vel, ullamcorper nec tellus. Proin interdum aliquet enim, id cursus odio condimentum et. Sed finibus est eu ex egestas, semper sollicitudin purus varius. Sed lorem leo, faucibus non dui placerat, consectetur vestibulum magna. Sed sit amet ultrices felis. Pellentesque ac pharetra ipsum.\r\n\r\nSuspendisse ligula nunc, interdum eu rutrum id, sodales nec magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non felis nibh. Quisque dapibus ligula sapien, non aliquet nibh congue eget. Sed nec massa dui. Suspendisse efficitur pellentesque lorem, vel egestas nunc varius at. Morbi luctus tortor vestibulum enim aliquet, sit amet dapibus metus iaculis. Aenean commodo felis vitae imperdiet tempor. Maecenas id elementum nisi, ut dapibus orci. Praesent efficitur sed massa lobortis pulvinar. Maecenas tincidunt tincidunt diam, et ornare lorem luctus ut. Suspendisse rhoncus nibh sed diam auctor, eget ullamcorper mauris pellentesque.\r\n\r\nProin magna nunc, vestibulum sit amet feugiat at, rutrum et elit. Nam ullamcorper vulputate placerat. Nam sed magna urna. Aliquam vel gravida mauris. Nunc sed consequat mi. Praesent efficitur sit amet dui in malesuada. Sed et accumsan sapien. Aenean cursus nibh quis nibh varius sollicitudin. In hendrerit sem in purus ultricies tincidunt. Cras purus massa, bibendum id dignissim a, accumsan id orci. Cras interdum accumsan aliquam. Etiam a turpis ipsum. Donec pretium odio ut nibh tincidunt ultricies. Sed suscipit, ante non blandit mollis, lorem urna consectetur orci, quis euismod massa turpis quis diam. Mauris tincidunt nibh vel feugiat malesuada. Etiam fringilla augue purus, a interdum ligula posuere ac.\r\n\r\nVivamus quis molestie leo. Duis vulputate lorem libero, vitae cursus augue dignissim vitae. Donec vestibulum nulla nunc, vitae ultricies nulla tincidunt et. Aliquam et ex dolor. Proin nec leo arcu. In fermentum turpis eget arcu laoreet, at mattis lacus pharetra. Etiam pharetra velit vitae felis interdum eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec condimentum, urna quis pharetra pulvinar, mauris velit molestie mauris, eget auctor diam lectus sit amet dui. Mauris ut ex vel massa tristique congue nec ac tellus. Vivamus nec semper sapien. Vivamus sed orci non lacus sodales fermentum. Sed quis euismod ex. Sed id tincidunt nulla. Donec eget enim nec est aliquet imperdiet in sit amet orci. Mauris ipsum orci, accumsan a lacus non, luctus ultricies diam.', 'Primer Asunto'),
+(2, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempus lacus turpis, a bibendum orci tincidunt eget. Curabitur posuere tempus cursus. Proin eu blandit mi. Ut congue metus et tempor lobortis. Praesent at augue bibendum, tincidunt nunc sed, lobortis quam. Integer non purus accumsan, facilisis tellus sit amet, elementum diam. Vestibulum egestas sit amet tortor sit amet tristique. Duis justo magna, mattis eu risus nec, vulputate tempus libero. Cras eu quam sed quam sollicitudin mattis ut ac justo. Curabitur nec sapien ac nunc porta aliquam in eget nunc. Pellentesque imperdiet elementum lectus, nec rutrum nunc.\r\n\r\nSed sodales feugiat gravida. Fusce tellus neque, iaculis sed pretium sed, varius eu metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin mattis nulla libero, eu euismod leo egestas ut. Morbi sed ex dolor. Vivamus feugiat, lorem sed eleifend ultrices, nibh dui varius ligula, id lobortis arcu velit in ante. Mauris quis venenatis nibh. Quisque tristique, metus a semper vestibulum, lectus felis pharetra neque, id porta libero felis id elit. Maecenas maximus dui vitae nunc aliquam convallis. Aliquam semper sapien id magna ultricies congue. Cras malesuada, quam eget scelerisque vehicula, tortor leo pharetra lorem, id commodo felis augue nec ante. Mauris iaculis id ante vel placerat.\r\n\r\nPhasellus vitae sodales nibh. In ac quam in risus lacinia viverra. Nullam sit amet fringilla nibh. Nam pretium velit varius mi aliquam, vel suscipit neque volutpat. Fusce sed ex a nibh blandit sollicitudin. Duis maximus maximus nunc, vitae gravida elit vehicula a. Vestibulum sit amet tincidunt urna. Nam at euismod metus. Quisque sagittis eleifend nulla, id venenatis mauris.\r\n\r\nSuspendisse velit velit, consectetur non varius id, bibendum vitae quam. Nulla rutrum elit quis est commodo, a lobortis nisl facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus at rutrum ipsum. Duis pellentesque leo quam. Morbi molestie pretium tellus, at iaculis purus efficitur vitae. Maecenas diam est, tempus et suscipit sed, semper in velit. Curabitur nunc nulla, posuere et congue ut, scelerisque sit amet massa. Phasellus tempor odio ut leo faucibus lacinia. Proin sed lacinia libero, vel fermentum nunc. Suspendisse magna libero, porttitor vel luctus nec, gravida eu enim. Donec leo lacus, euismod ut nulla at, eleifend tempus leo. Ut a tortor iaculis, ullamcorper enim at, pretium odio. In rutrum purus vitae leo hendrerit, vel egestas nisl posuere. Proin lacinia euismod felis quis ornare. Aliquam vel suscipit quam.\r\n\r\nIn convallis porta justo, in egestas ipsum feugiat at. Vivamus commodo mauris eget aliquam tempor. Phasellus purus libero, lacinia vel lacinia vel, varius in turpis. Cras nec mi fermentum, fermentum nunc at, condimentum ipsum. Nunc tristique nisi non nisl finibus porta. Morbi consequat tempus sagittis. Sed tincidunt diam dignissim, vehicula eros feugiat, bibendum eros. Nunc porttitor et neque in facilisis. Curabitur cursus scelerisque cursus. Ut mattis suscipit pellentesque. Etiam interdum consequat elit, quis volutpat erat commodo non. Integer eu volutpat eros.', 'Segundo Asunto');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vecinos`
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL,
+  `user` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `user`, `password`) VALUES
+(1, 'admin', 'admin'),
+(2, 'samuel@gmail.com', 'jesus');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vecinos`
 --
 
 CREATE TABLE `vecinos` (
-  `id_vecino` int(11) NOT NULL,
-  `correo` varchar(255) NOT NULL,
-  `contrasena` varchar(20) NOT NULL,
-  `imagen` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `nombre` varchar(64) NOT NULL,
+  `piso` int NOT NULL,
+  `puerta` varchar(8) NOT NULL,
+  `imagen` varchar(256) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `vecinos`
+-- Dumping data for table `vecinos`
 --
 
-INSERT INTO `vecinos` (`id_vecino`, `correo`, `contrasena`, `imagen`) VALUES
-(1, 'samuel@gmail.com', 'jesus', 'img/profile1.jpg'),
-(2, 'roberto@gmail.com', 'piano', 'img/profile2.jpg'),
-(3, 'pedro@gmail.com', 'gato', 'img/profile3.jpg'),
-(4, 'ana@gmail.com', 'mesa', 'img/profile4.jpg'),
-(5, 'jose@gmail.com', 'ventana', NULL),
-(6, 'carlos@gmail.com', 'puerta', NULL),
-(7, 'sofia@gmail.com', 'flor', NULL),
-(8, 'alberto@gmail.com', 'libro', NULL);
+INSERT INTO `vecinos` (`id`, `nombre`, `piso`, `puerta`, `imagen`) VALUES
+(2, 'Samuel', 1, 'A', 'img\\profile1.jpg');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `administradores`
+-- Indexes for table `administradores`
 --
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `buzones`
+-- Indexes for table `buzones`
 --
 ALTER TABLE `buzones`
-  ADD PRIMARY KEY (`id_vecino`,`id_buzon`);
+  ADD PRIMARY KEY (`id_mensaje`,`id_vecino`),
+  ADD KEY `id_vecino` (`id_vecino`);
 
 --
--- Indices de la tabla `vecinos`
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD UNIQUE KEY `user` (`user`);
+
+--
+-- Indexes for table `vecinos`
 --
 ALTER TABLE `vecinos`
-  ADD PRIMARY KEY (`id_vecino`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `administradores`
+-- AUTO_INCREMENT for table `buzones`
+--
+ALTER TABLE `buzones`
+  MODIFY `id_mensaje` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  ADD CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`);
 
 --
--- AUTO_INCREMENT de la tabla `vecinos`
---
-ALTER TABLE `vecinos`
-  MODIFY `id_vecino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `buzones`
+-- Constraints for table `buzones`
 --
 ALTER TABLE `buzones`
-  ADD CONSTRAINT `buzones_ibfk_1` FOREIGN KEY (`id_vecino`) REFERENCES `vecinos` (`id_vecino`);
+  ADD CONSTRAINT `buzones_ibfk_1` FOREIGN KEY (`id_vecino`) REFERENCES `vecinos` (`id`);
+
+--
+-- Constraints for table `vecinos`
+--
+ALTER TABLE `vecinos`
+  ADD CONSTRAINT `vecinos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

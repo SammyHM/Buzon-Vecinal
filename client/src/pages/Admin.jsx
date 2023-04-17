@@ -1,24 +1,25 @@
 // Import librerias react
-import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 // Import nuestros componentes
-import { fetchUsuarios } from "../api";
-import ListaVecinos from "../components/ListaVecinos";
-import Logout from "../components/log/Logout";
-import VolverAInicio from "../components/util/VolverAInicio";
+import { fetchAdminUsuarios } from '../api'
+import { UserContext } from '../context/UserContext'
+import ListaVecinos from '../components/ListaVecinos'
+import Logout from '../components/log/Logout'
+import VolverAInicio from '../components/util/VolverAInicio'
+import Header from '../components/Header'
 // Import css/imagenes
-import "../css/index.css";
-import styles from "../css/admin.module.css";
-import Header from "../components/Header";
+import '../css/index.css'
+import styles from '../css/admin.module.css'
 
 export default function Admin() {
-  const navigate = useNavigate();
-  const [users, setUsers] = useState(null);
+  const { user, userList, setUserList } = useContext(UserContext)
+  const navigate = useNavigate()
 
   // Usamos la api para obtener los usuarios al cargar el componente
-  useEffect(() => {
-    fetchUsuarios().then((response) => setUsers(response));
-  }, [users]);
+  useState(() => {
+    fetchAdminUsuarios(user.token, null).then((response) => setUserList(response))
+  }, [userList])
 
   return (
     <div className={styles.admin}>
@@ -29,14 +30,14 @@ export default function Admin() {
         <div className={styles.botonUsuario}>
           <button
             onClick={() => {
-              navigate("/admin/add");
+              navigate('/admin/add')
             }}
           >
             Añadir usuario
           </button>
         </div>
         <div className={styles.usuarios}>
-          <ListaVecinos users={users} mode={"admin"}></ListaVecinos>
+          <ListaVecinos users={userList} mode={'admin'}></ListaVecinos>
         </div>
         <Outlet />
         <div className={styles.button_container}>
@@ -47,5 +48,5 @@ export default function Admin() {
         </div>
       </div>
     </div>
-  );
+  )
 }

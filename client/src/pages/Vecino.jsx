@@ -1,45 +1,45 @@
 // Import librerias react
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 // Import nuestros componentes
-import { UserContext } from "../context/UserContext";
-import { fetchCorreos } from "../api";
-import { deleteMensaje } from "../api";
-import VolverAInicio from "../components/util/VolverAInicio";
-import Logout from "../components/log/Logout";
+import { UserContext } from '../context/UserContext'
+import { fetchCorreos, deleteMensaje } from '../api'
+import VolverAInicio from '../components/util/VolverAInicio'
+import Logout from '../components/log/Logout'
 // Import css/imagenes
-import styles from "../css/vecino.module.css";
-import bin from "../css/img/delete_icon.png";
-import { AnimatePresence, motion } from "framer-motion";
-import Header from "../components/Header";
+import styles from '../css/vecino.module.css'
+import bin from '../css/img/delete_icon.png'
+import { AnimatePresence, motion } from 'framer-motion'
+import Header from '../components/Header'
 
 export default function Vecino() {
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-  const [mesages, setMesages] = useState();
-  const ref = useRef();
+  const navigate = useNavigate()
+  const { user } = useContext(UserContext)
+  const [mesages, setMesages] = useState()
+  const ref = useRef()
 
   // Usamos la api para obtener los correos al cargar el componente
   useEffect(() => {
-    fetchCorreos(user).then((response) => {
-      if (response.mesages) {
-        setMesages(response.mesages);
-      } else {
-        navigate("/");
-      }
-    });
-  }, [user, navigate]);
+    fetchCorreos(user.token)
+      .then((response) => {
+        if (response) {
+          setMesages(response)
+        }
+      })
+  }, [user, navigate])
 
   // Usamos la api para eliminar el correo
   const handleDelete = (e) => {
-    deleteMensaje(user, e.target.id).then((response) => {
-      if (response.result) {
-        fetchCorreos(user).then((response) => setMesages(response.mesages));
-      } else {
-        alert("No se pudo eliminar el mensaje");
-      }
-    });
-  };
+    deleteMensaje(user.token, e.target.id)
+      .then((response) => {
+        if (response.deleted) {
+          fetchCorreos(user.token)
+            .then((messages) => setMesages(messages))
+        } else {
+          alert('No se pudo eliminar el mensaje')
+        }
+      })
+  }
 
   return (
     <div className={styles.vecino}>
@@ -47,43 +47,43 @@ export default function Vecino() {
       <h1>Bienvenido a su buzón</h1>
       <div className={styles.buzon}>
         <div className={styles.mensajes}>
-          <AnimatePresence mode={"popLayout"}>
-            {mesages?.map(({ id_buzon, asunto, mensaje }, id) => {
+          <AnimatePresence mode={'popLayout'}>
+            {mesages?.map(({ id_mensaje, mensaje, asunto }) => {
               return (
                 <motion.div
                   layout
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.8, opacity: 0 }}
-                  transition={{ type: "spring", duration: 1 }}
-                  key={id_buzon}
+                  transition={{ type: 'spring', duration: 1 }}
+                  key={`Mensaje: ${id_mensaje}`}
                   className={styles.mensajeContainer}
                 >
                   <img
-                    id={id_buzon}
+                    id={id_mensaje}
                     src={bin}
-                    alt="bin"
+                    alt='bin'
                     onClick={(e) => handleDelete(e)}
                   />
                   <div
                     className={styles.mensaje}
                     onClick={() => {
-                      ref.current.innerText = mensaje;
+                      ref.current.innerText = mensaje
                     }}
                   >
                     {asunto}
                   </div>
                 </motion.div>
-              );
+              )
             })}
           </AnimatePresence>
         </div>
         <div className={styles.mostrarMensaje} ref={ref}>
-          {mesages?.length ? "Seleccione un mensaje" : "No tienes mensajes :("}
+          {mesages?.length ? 'Seleccione un mensaje' : 'No tienes mensajes :('}
         </div>
       </div>
       <VolverAInicio />
       <Logout />
     </div>
-  );
+  )
 }

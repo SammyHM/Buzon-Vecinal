@@ -33,7 +33,7 @@ export default function Login({
 
       <div className={styles.login}>
         <div className={styles.imgLogin}>
-          <img src={image_login} alt="" />
+          <img src={image_login} alt='' />
         </div>
 
         <hr />
@@ -41,27 +41,27 @@ export default function Login({
         <form onSubmit={handleSubmit}>
           <h2>{title}</h2>
           <div className={styles.campo}>
-            <label htmlFor="user">{userField}</label>
+            <label htmlFor='user'>{userField}</label>
             <input
-              id="user"
-              type="text"
+              id='user'
+              type='text'
               value={formData.user}
               onChange={handleInput}
               disabled={isDisabled}
             />
           </div>
           <div className={styles.campo}>
-            <label htmlFor="password">Contraseña</label>
+            <label htmlFor='password'>Contraseña</label>
             <input
-              id="password"
-              type="password"
+              id='password'
+              type='password'
               value={formData.password}
               onChange={handleInput}
             />
           </div>
-          <span className="error">{errorMsg}</span>
+          <span className='error'>{errorMsg}</span>
           <button>Iniciar sesion</button>
-          <Link onClick={salir} to="/">
+          <Link onClick={salir} to='/'>
             Salir
           </Link>
         </form>

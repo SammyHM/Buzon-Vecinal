@@ -16,18 +16,18 @@ export default function App() {
   return (
     <Routes>
       <Route index element={<Inicio />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/login-admin" element={<Login mode="admin" />} />
-      <Route element={<ProtectedRoute role="user" />}>
-        <Route path="/buzon" element={<Vecino />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/login-admin' element={<Login mode='admin' />} />
+      <Route element={<ProtectedRoute role='user' />}>
+        <Route path='/buzon' element={<Vecino />} />
       </Route>
-      <Route element={<ProtectedRoute role="admin" />}>
-        <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/edit/:mail" element={<EditForm />} />
-          <Route path="/admin/add" element={<AddForm />} />
+      <Route element={<ProtectedRoute role='admin' />}>
+        <Route path='/admin' element={<Admin />}>
+          <Route path='/admin/edit/:id' element={<EditForm />} />
+          <Route path='/admin/add' element={<AddForm />} />
         </Route>
       </Route>
-      <Route path="/cartero" element={<Cartero />} />
+      <Route path='/cartero' element={<Cartero />} />
     </Routes>
   )
 }

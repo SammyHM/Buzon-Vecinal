@@ -1,170 +1,165 @@
 .admin {
-    background-color: #e9e3d5;
-    height: auto;
-    max-width: 1600px;
-    margin: 0 auto;
-    color: #033043;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+  background-color: #e9e3d5;
+  height: auto;
+  max-width: 1600px;
+  margin: 0 auto;
+  color: #033043;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 
-    position: relative;
+  position: relative;
 }
 
 .shape {
-    background-color: #fda521;
-    width: 100%;
-    height: 80px;
-    z-index: 1;
-    position: absolute;
-    top: 0;
+  background-color: #fda521;
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
 }
 
 .custom {
-    position: absolute;
-    bottom: -200px;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+  position: absolute;
+  bottom: -200px;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .custom svg {
-    position: relative;
-    display: block;
-    width: calc(144% + 1.3px);
-    height: 200px;
+  position: relative;
+  display: block;
+  width: calc(144% + 1.3px);
+  height: 200px;
 }
 
 .custom .shapeFill {
-    fill: #fda521;
+  fill: #fda521;
 }
 
 .usuarios {
-    height: 500px;
-    padding: 10px;
-    margin: 0 auto;
+  height: 500px;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .content {
-    min-height: calc(100vh - 50px);
-    margin-top: 50px;
-    z-index: 10;
+  min-height: calc(100vh - 50px);
+  margin-top: 50px;
+  z-index: 10;
 }
 
 .content .title {
-    text-align: center;
+  text-align: center;
 }
 
-
 .slide_container {
-    background: #0a7273;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background: #0a7273;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide_container .imagenVecino {
-    overflow: hidden;
-    width: 100%;
-    height: 80%;
+  overflow: hidden;
+  width: 100%;
+  height: 80%;
 }
 
 .slide_container .imagenVecino img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .slide_container .button_container {
-    width: 90%;
+  width: 90%;
 }
 
 .edit_delete .edit {
-    background-color: #fda521;
+  background-color: #fda521;
 }
 
 .edit_delete .delete {
-    background-color: red;
+  background-color: red;
 }
 
 .button_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    min-width: 500px;
-    max-width: 500px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-    padding: 20px;
-    margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 500px;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+  padding: 20px;
+  margin: 20px auto;
 }
 
 .botonUsuario {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: -80px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -80px;
 }
 
-
 @media screen and (max-width: 766px) {
+  p {
+    font-size: 8pt;
+  }
 
+  .slide_container .mobile {
+    display: flex;
+  }
 
-    p {
-        font-size: 8pt;
-    }
+  .papelera,
+  .editar {
+    width: 40px;
+  }
 
-    .slide_container .mobile {
-        display: flex;
+  .edit_delete {
+    display: none;
+  }
 
-    }
+  .content {
+    width: 400px;
+  }
 
-    .papelera,
-    .editar {
-        width: 40px;
-    }
+  .usuarios {
+    width: 400px;
+    height: 300px;
+  }
 
-    .edit_delete {
-        display: none;
-    }
+  .form {
+    min-width: 400px;
+    margin: 0 auto;
+  }
 
-    .content {
-        width: 400px;
-    }
+  .usuarios {
+    width: 120%;
+    margin-left: -40px;
+  }
 
-    .usuarios {
-        width: 400px;
-        height: 300px;
-    }
-
-    .form {
-        min-width: 400px;
-        margin: 0 auto;
-    }
-
-    .usuarios {
-        width: 120%;
-        margin-left: -40px;
-    }
-
-    .botonUsuario {
-        width: 110%;
-    }
+  .botonUsuario {
+    width: 110%;
+  }
 }

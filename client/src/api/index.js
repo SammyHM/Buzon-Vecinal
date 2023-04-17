@@ -1,13 +1,11 @@
 /* Async petition*/
 
-async function fetchServer(body, route) {
-  const ENDPOINT = 'http://localhost'
+export const ENDPOINT = 'http://localhost:8000'
 
+async function fetchData(method, headers, body, route) {
   const args = {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
+    method: method,
+    headers: headers ? headers : {},
     body: body,
   }
 
@@ -18,106 +16,117 @@ async function fetchServer(body, route) {
 
 /* Usuarios */
 
-export async function fetchUsuarios() {
-  return fetchServer(null, '/api/usuarios.php')
-}
-
-export async function fetchUsuario(jwt, mail) {
-  return fetchServer(
-    JSON.stringify({
-      jwt: jwt,
-      mail: mail,
-    }),
-    '/api/usuario.php'
-  )
+export async function fetchPublicUsuarios() {
+  return fetchData('GET', null, null, '/vecinos')
 }
 
 export async function fetchCorreos(jwt) {
-  return fetchServer(
-    JSON.stringify({
-      jwt: jwt,
-    }),
-    '/api/correos.php'
+  return fetchData(
+    'GET',
+    { Authorization: jwt },
+    null,
+    '/buzones'
   )
 }
 
-export async function deleteMensaje(jwt, message) {
-  return fetchServer(
-    JSON.stringify({
-      jwt: jwt,
-      message: message,
-    }),
-    '/api/borrarMensaje.php'
+export async function deleteMensaje(jwt, id) {
+  return fetchData(
+    'DELETE',
+    { Authorization: jwt },
+    null,
+    `/buzones/${id}`
   )
 }
 
 /* Cartero */
 
-export async function sendMensaje({ email, asunto, mensaje }) {
-  return fetchServer(
+export async function sendMensaje({ user, mensaje, asunto }) {
+  return fetchData(
+    'POST',
+    null,
     JSON.stringify({
-      mail: email,
-      subject: asunto,
-      content: mensaje,
+      user: user,
+      mensaje: mensaje,
+      asunto: asunto,
     }),
-    '/api/enviarMensaje.php'
+    '/buzones'
   )
 }
 
 /* Admin */
 
-export async function insertUser(jwt, { correo, contrasena, imagen }) {
-  return fetchServer(
+export async function fetchAdminUsuarios(jwt, id) {
+  let query = id ? `?id=${id}` : ''
+  return fetchData(
+    'GET',
+    { Authorization: jwt },
+    null,
+    `/admin/vecinos${query}`)
+}
+
+export async function insertUser(jwt, { nombre, piso, puerta, user, password, imagen }) {
+  return fetchData(
+    'POST',
+    { Authorization: jwt },
     JSON.stringify({
-      jwt: jwt,
-      password: contrasena,
-      user: correo,
-      image: imagen,
+      nombre: nombre,
+      piso: piso,
+      puerta: puerta,
+      user: user,
+      password: password,
+      imagen: imagen
     }),
-    '/api/insertUser.php'
+    `/vecinos`
   )
 }
 
-export async function updateUser(jwt, { correo, contrasena, imagen }) {
-  return fetchServer(
+export async function updateUser(jwt, { id, nombre, piso, puerta, user, password, imagen }) {
+  return fetchData(
+    'PUT',
+    { Authorization: jwt },
     JSON.stringify({
-      jwt: jwt,
-      user: correo,
-      password: contrasena,
-      image: imagen,
+      nombre: nombre,
+      piso: piso,
+      puerta: puerta,
+      user: user,
+      password: password,
+      imagen: imagen
     }),
-    '/api/updateUser.php'
+    `/vecinos/${id}`
   )
 }
 
-export async function deleteUsuario(jwt, mail) {
-  return fetchServer(
-    JSON.stringify({
-      jwt: jwt,
-      mail: mail,
-    }),
-    '/api/borrarUsuario.php'
+export async function deleteUsuario(jwt, id) {
+  return fetchData(
+    'DELETE',
+    { Authorization: jwt },
+    null,
+    `/vecinos/${id}`
   )
 }
 
 /* Autentificación */
 
 export async function authUser({ user, password }) {
-  return fetchServer(
+  return fetchData(
+    'POST', 
+    null,
     JSON.stringify({
       user: user,
       password: password,
     }),
-    '/api/authUser.php'
+    '/login/user'
   )
 }
 
 export async function authAdmin({ user, password }) {
-  return fetchServer(
+  return fetchData(
+    'POST', 
+    null,
     JSON.stringify({
       user: user,
       password: password,
     }),
-    '/api/authAdmin.php'
+    '/login/admin'
   )
 }

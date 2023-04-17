@@ -1,0 +1,12 @@
+RewriteEngine On
+
+#accet Authorization header
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+#accept loading of actual files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#send everyting else to the index page
+RewriteRule ^(.*)$ index.php [L,QSA]

@@ -3,14 +3,13 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 // Import nuestros componentes
 import { UserContext } from '../../context/UserContext'
+import { ENDPOINT } from '../../api'
 // Import css/imagenes
 import placeholder from '../../css/img/placeholder.png'
 
-export default function SelectUser({ mail, image }) {
+export default function SelectUser({ image, vecino, mail }) {
   const { setSelected } = useContext(UserContext)
   const navigate = useNavigate()
-
-  const ENDPOINT = 'http://localhost'
 
   const handleClick = (mail) => {
     setSelected(mail)
@@ -18,15 +17,15 @@ export default function SelectUser({ mail, image }) {
   }
   return (
     <>
-      <div className="imagenVecino">
+      <div className='imagenVecino'>
         <img
           src={image ? `${ENDPOINT}/${image}` : placeholder}
-          alt="profile"
+          alt='profile'
           title={mail}
           onClick={() => handleClick(mail)}
         />
       </div>
-      <p>{mail}</p>
+      <p>{vecino}</p>
     </>
   )
 }
