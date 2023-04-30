@@ -33,5 +33,5 @@ export default function AddForm() {
 
   }
 
-  return <UserForm title={'Añadir'} formDataState={formDataState} handleSubmit={handleSubmit} readOnlyPassword={false}/>
+  return <UserForm title={'Añadir'} formDataState={formDataState} handleSubmit={handleSubmit} editUser={false}/>
 }

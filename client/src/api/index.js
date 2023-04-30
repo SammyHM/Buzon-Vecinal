@@ -80,7 +80,7 @@ export async function insertUser(jwt, { nombre, piso, puerta, user, password, im
   )
 }
 
-export async function updateUser(jwt, { id, nombre, piso, puerta, user, password, imagen }) {
+export async function updateUser(jwt, { nombre, piso, puerta, user, imagen }, id) {
   return fetchData(
     'PUT',
     { Authorization: jwt },
@@ -89,7 +89,6 @@ export async function updateUser(jwt, { id, nombre, piso, puerta, user, password
       piso: piso,
       puerta: puerta,
       user: user,
-      password: password,
       imagen: imagen
     }),
     `/vecinos/${id}`

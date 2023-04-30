@@ -19,7 +19,7 @@ export default function Login({ mode }) {
   const adminSubmit = (e) => {
     e.preventDefault()
     authAdmin(formState[0]).then((response) => {
-      if (response) {
+      if (response.token) {
         setSelected(null)
         setUser(response)
         navigate('/admin/add')
@@ -32,7 +32,7 @@ export default function Login({ mode }) {
   const userSubmit = (e) => {
     e.preventDefault()
     authUser(formState[0]).then((response) => {
-      if (response) {
+      if (response.token) {
         setSelected(null)
         setUser(response)
         navigate('/buzon')

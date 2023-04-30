@@ -3,7 +3,7 @@ import Cargando from '../util/Cargando'
 // Import css/imagenes
 import styles from '../../css/admin.module.css'
 
-export default function UserForm({title, formDataState, handleSubmit, readOnlyPassword}) {
+export default function UserForm({title, formDataState, handleSubmit, editUser}) {
   const [formData, setFormData] = formDataState
 
   const handleInput = (e) => {
@@ -54,16 +54,23 @@ export default function UserForm({title, formDataState, handleSubmit, readOnlyPa
           onChange={handleInput}
           required
         />
-        <label htmlFor='password'>Contraseña</label>
-        <input
-          id='password'
-          name='password'
-          type='password'
-          value={formData.password}
-          onChange={handleInput}
-          readOnly={readOnlyPassword}
-          required
-        />
+        {
+          !editUser ? (
+            <>
+              <label htmlFor='password'>Contraseña</label>
+              <input
+                id='password'
+                name='password'
+                type='password'
+                value={formData.password}
+                onChange={handleInput}
+                required
+              />
+            </>
+          ) : (
+            <></>
+          )
+        }
         <label htmlFor='image'>Imagen</label>
         <input
           id='image'
