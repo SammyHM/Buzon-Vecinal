@@ -15,7 +15,6 @@ export default function EditForm() {
     piso: '',
     puerta: '',
     user: '',
-    password: '',
     imagen: ''
   })
 
@@ -27,7 +26,7 @@ export default function EditForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user.token, formDataState[0]).then((response) => {
+    updateUser(user.token, formDataState[0], id).then((response) => {
       if (response.updated) {
         fetchAdminUsuarios(user.token, null).then((response) => setUserList(response))
       } else {
@@ -36,5 +35,5 @@ export default function EditForm() {
     })
   }
 
-  return <UserForm title={'Actualizar'} formDataState={formDataState} handleSubmit={handleSubmit} readOnlyPassword={true}/>
+  return <UserForm title={'Actualizar'} formDataState={formDataState} handleSubmit={handleSubmit} editUser={true}/>
 }

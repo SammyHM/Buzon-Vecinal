@@ -76,8 +76,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `password`) VALUES
-(1, 'admin', 'admin'),
-(2, 'samuel@gmail.com', 'jesus');
+(1, 'admin', '$2y$10$nD3Zn7S1q6AXiPYPCbBm4O.nA1amRhDjYEud0s.Yvz78LChh7kE0y'),
+(2, 'samuel@gmail.com', '$2y$10$A5/uHC7BVj8EzPMPucJ17.bwD/9bh3U7Iek7kQ28jurVKRZ78rAni'),
+(3, 'pedro@gmail.com', '$2y$10$xuo6fcadDpFI.Br16hjgdOG.DESzZACpVWU434SijQK9fi3ypqGZe'),
+(4, 'sofia@gmail.com', '$2y$10$IHSh/fs39MPqkjYVQ1Hhd.KLED6KYKFDmdE3B1Aa4e28JOwg1.Y2i'),
+(5, 'julio@gmail.com', '$2y$10$hrsmiPV4CBcGsSQwCbW4eOYdBH7FU8IRG8fNh4FSxPjRuDx/4N8C2'),
+(6, 'andrea@gmail.com', '$2y$10$dlLR8RbolkKmn9OtpZPx0ep33brglCDJvedz.wGeasSkp/h.WEVoe');
 
 -- --------------------------------------------------------
 
@@ -98,7 +102,11 @@ CREATE TABLE `vecinos` (
 --
 
 INSERT INTO `vecinos` (`id`, `nombre`, `piso`, `puerta`, `imagen`) VALUES
-(2, 'Samuel', 1, 'A', 'img\\profile1.jpg');
+(2, 'Samuel', 1, 'A', 'img\\profile1.jpg'),
+(3, 'perdro', 2, 'B', 'img\\profile2.jpg'),
+(4, 'Sofia', 1, 'B', 'img\\profile3.jpg'),
+(5, 'Julio', 2, 'A', ''),
+(6, 'Andrea', 3, 'C', 'img\\profile4.jpg');
 
 --
 -- Indexes for dumped tables

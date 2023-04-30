@@ -13,6 +13,9 @@ import Header from '../components/Header'
 export default function Inicio() {
   const { user } = useContext(UserContext)
   const role = () => {
+    if (user === null || user['token'] === null || typeof user['token'] !== 'string') {
+      return null
+    }
     const parts = user.token.split('.')
     const decodedPayload = atob(parts[1])
     const payloadObj = JSON.parse(decodedPayload)
@@ -40,7 +43,7 @@ export default function Inicio() {
       </div>
 
       <div className='mensaje'>
-        {user ? (
+        {user !== null && user.token ? (
           <button className='button-mensaje'>
             <Link
               to={role() === 'admin' ? '/admin/add' : '/buzon'}

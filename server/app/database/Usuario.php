@@ -26,13 +26,13 @@ class Usuario
 		return $sth->rowCount() ? $vecinos : null;
 	}
 
-	public static function Update($id, $user, $password): int
+	public static function Update($id, $user): int
 	{
 		$sth = DataBase::Execute(
 			"UPDATE usuarios 
-        	SET user = ?, password = ?
+        	SET user = ?
 			WHERE id = ?",
-			[$user, $password, $id]
+			[$user, $id]
 		);
 		return $sth->rowCount();
 	}
@@ -42,7 +42,7 @@ class Usuario
 		$sth = DataBase::Execute(
 			"INSERT INTO usuarios
 			VALUES (0, ?, ?)",
-			[$user, $password]
+			[$user, self::PasswordHash($password)]
 		);
 		return $sth->rowCount();
 	}
@@ -55,5 +55,10 @@ class Usuario
 			[$id]
 		);
 		return $sth->rowCount();
+	}
+
+	public static function PasswordHash($password)
+	{
+		return password_hash($password, PASSWORD_DEFAULT);
 	}
 }

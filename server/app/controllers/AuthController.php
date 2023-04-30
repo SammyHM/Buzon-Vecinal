@@ -31,11 +31,13 @@ class AuthController extends Controller
 			FROM usuarios
 			INNER JOIN $table
 			ON usuarios.id = $table.id 
-			WHERE usuarios.user = ? AND usuarios.password = ?",
-			[$user, $password]
+			WHERE usuarios.user = ?",
+			[$user]
 		);
 
-		$jwt = $query->rowCount() === 1 ? Jwt::Encode(['user' => $user, 'role' => $role]) : false;
+		$jwt = password_verify($password, $query->fetchAll(\PDO::FETCH_ASSOC)[0]['password'])
+			? Jwt::Encode(['user' => $user, 'role' => $role])
+			: false;
 		return ['token' => $jwt];
 	}
 

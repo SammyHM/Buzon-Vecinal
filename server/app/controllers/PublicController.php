@@ -6,7 +6,6 @@ use core\Request;
 
 use app\database\Vecino;
 use app\database\Buzon;
-use dev\Debug;
 
 class PublicController extends AuthController
 {
@@ -32,7 +31,6 @@ class PublicController extends AuthController
 	{
 		$response = false;
 		$body = Request::Body();
-		// Debug::Show($body);
 		if (self::IsMensajeSet($body)) {
 			$response = Buzon::InsertByUsuario($body['user'], $body['mensaje'], $body['asunto']) !== 0;
 		}

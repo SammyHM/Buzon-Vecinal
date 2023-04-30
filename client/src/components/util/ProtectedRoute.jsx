@@ -13,15 +13,18 @@ export default function ProtectedRoute({ role }) {
   const storage = localStorage.getItem('user')
 
   const validUserRole = (currentUser) => {
-    if (currentUser === null || typeof currentUser !== 'string') return false
-    const parts = currentUser.split('.')
+    if (currentUser === null || currentUser['token'] === null || typeof currentUser['token'] !== 'string') {
+      return false
+    }
+    
+    const parts = currentUser['token'].split('.')
     const decodedPayload = atob(parts[1])
     const payloadObj = JSON.parse(decodedPayload)
 
     return payloadObj.role === role
   }
 
-  return validUserRole(user.token) || validUserRole(storage.token) ? (
+  return validUserRole(user) || validUserRole(storage) ? (
     <Outlet />
   ) : (
     <Redirect />
