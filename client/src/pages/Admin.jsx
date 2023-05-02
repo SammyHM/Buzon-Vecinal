@@ -1,5 +1,5 @@
 // Import librerias react
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 // Import nuestros componentes
 import { fetchAdminUsuarios } from '../api'
